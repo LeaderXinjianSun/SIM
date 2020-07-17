@@ -1,0 +1,306 @@
+﻿<UserControl x:Class="Omicron.View.OperaterActionPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mvvm="clr-namespace:BingLibrary.hjb;assembly=BingLibrary"
+             xmlns:control="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Omicron.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="SxjDictionary.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Resources/Icons.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Header="机械手">
+            <StackPanel Margin="0,20,0,8" Orientation="Vertical">
+                <StackPanel Margin="5,15,5,0" Orientation="Horizontal">
+                    <Button Margin="20,0,0,0" IsEnabled="{Binding ClearButtonEnable}" Content="清空" Background="Red" Foreground="Yellow" Command="{mvvm:ActionAuto ClearFlexer}"></Button>
+                </StackPanel>
+                <StackPanel Margin="5,15,5,0" Orientation="Horizontal">
+                    <Button Margin="20,0,0,0" IsEnabled="{Binding ClearButtonEnable}" Content="上料" Background="Green" Foreground="White" Command="{mvvm:ActionAutoWithParam XQTActionFunction}" CommandParameter="1"></Button>
+                    <!--<Button Margin="20,0,0,0" IsEnabled="{Binding ClearButtonEnable}" Content="下料" Background="Green" Foreground="White" Command="{mvvm:ActionAutoWithParam XQTActionFunction}" CommandParameter="2"></Button>
+                    <Button Margin="20,0,0,0" IsEnabled="{Binding ClearButtonEnable}" Content="模组回原点" Background="Green" Foreground="White" Command="{mvvm:ActionAutoWithParam XQTActionFunction}" CommandParameter="3"></Button>-->
+                </StackPanel>
+                <StackPanel Margin="5,15,5,0" Orientation="Horizontal">
+                    <Button Margin="20,0,0,0" IsEnabled="{Binding AllowCleanActionCommand}" Content="清洁" Background="Green" Foreground="White" Command="{mvvm:ActionAutoWithParam XQTActionFunction}" CommandParameter="4"></Button>
+                    <TextBlock Margin="20,5" Text="上次清洁时刻： "></TextBlock>
+                    <TextBlock FontStyle="Italic" Text="{Binding LastChuiqiTimeStr}" VerticalAlignment="Center"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="测试机">
+            <Grid>
+                <TabControl TabStripPlacement="Bottom">
+                    <TabItem Header="Normal">
+                        <TabControl TabStripPlacement="Right">
+                            <TabItem Header="1#">
+                                <Grid>
+                                    <StackPanel Margin="5,10" Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Time:" Width="100" Margin="5,0"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestTime0}"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="sec" Margin="5,0"></TextBlock>
+                                            <Button HorizontalAlignment="Right" Width="40" Margin="0,0,2,0" Content="清零" Command="{mvvm:ActionAutoWithParam CleantoZero}" CommandParameter="4"></Button>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Count:" Width="100" Margin="5,0"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestCount0_Nomal}"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="Pass Count:" Width="100" Margin="5,0"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding PassCount0_Nomal}"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="Fail Count:" Width="100" Margin="5,0"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding FailCount0_Nomal}"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="Yield:" Width="100" Margin="5,0"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding Yield0_Nomal}"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="%" Margin="5,0"></TextBlock>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="2#">
+                                <StackPanel Margin="5,10" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Time:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestTime1}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="sec" Margin="5,0"></TextBlock>
+                                        <Button HorizontalAlignment="Right" Width="40" Margin="0,0,2,0" Content="清零" Command="{mvvm:ActionAutoWithParam CleantoZero}" CommandParameter="5"></Button>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestCount1_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Pass Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding PassCount1_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Fail Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding FailCount1_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Yield:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding Yield1_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="%" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+                            <TabItem Header="3#">
+                                <StackPanel Margin="5,10" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Time:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestTime2}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="sec" Margin="5,0"></TextBlock>
+                                        <Button HorizontalAlignment="Right" Width="40" Margin="0,0,2,0" Content="清零" Command="{mvvm:ActionAutoWithParam CleantoZero}" CommandParameter="6"></Button>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestCount2_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Pass Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding PassCount2_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Fail Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding FailCount2_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Yield:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding Yield2_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="%" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+                            <TabItem Header="4#">
+                                <StackPanel Margin="5,10" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Time:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestTime3}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="sec" Margin="5,0"></TextBlock>
+                                        <Button HorizontalAlignment="Right" Width="40" Margin="0,0,2,0" Content="清零" Command="{mvvm:ActionAutoWithParam CleantoZero}" CommandParameter="7"></Button>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestCount3_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Pass Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding PassCount3_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Fail Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding FailCount3_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Yield:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding Yield3_Nomal}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="%" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+                        </TabControl>
+                    </TabItem>
+                    <TabItem Header="AAB">
+                        <TabControl TabStripPlacement="Right">
+                            <TabItem Header="1#">
+                                <Grid>
+                                    <StackPanel Margin="5,10" Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Time:" Width="100" Margin="5,0"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestTime0}"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="sec" Margin="5,0"></TextBlock>
+                                            <Button HorizontalAlignment="Right" Width="40" Margin="0,0,2,0" Content="清零" Command="{mvvm:ActionAutoWithParam CleantoZero}" CommandParameter="0"></Button>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Count:" Width="100" Margin="5,0"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestCount0}"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="Pass Count:" Width="100" Margin="5,0"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding PassCount0}"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="Fail Count:" Width="100" Margin="5,0"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding FailCount0}"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="Yield:" Width="100" Margin="5,0"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding Yield0}"></TextBlock>
+                                            <TextBlock Style="{StaticResource TextBlockBase}" Text="%" Margin="5,0"></TextBlock>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="2#">
+                                <StackPanel Margin="5,10" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Time:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestTime1}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="sec" Margin="5,0"></TextBlock>
+                                        <Button HorizontalAlignment="Right" Width="40" Margin="0,0,2,0" Content="清零" Command="{mvvm:ActionAutoWithParam CleantoZero}" CommandParameter="1"></Button>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestCount1}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Pass Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding PassCount1}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Fail Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding FailCount1}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Yield:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding Yield1}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="%" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+                            <TabItem Header="3#">
+                                <StackPanel Margin="5,10" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Time:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestTime2}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="sec" Margin="5,0"></TextBlock>
+                                        <Button HorizontalAlignment="Right" Width="40" Margin="0,0,2,0" Content="清零" Command="{mvvm:ActionAutoWithParam CleantoZero}" CommandParameter="2"></Button>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestCount2}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Pass Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding PassCount2}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Fail Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding FailCount2}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Yield:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding Yield2}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="%" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+                            <TabItem Header="4#">
+                                <StackPanel Margin="5,10" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Time:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestTime3}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="sec" Margin="5,0"></TextBlock>
+                                        <Button HorizontalAlignment="Right" Width="40" Margin="0,0,2,0" Content="清零" Command="{mvvm:ActionAutoWithParam CleantoZero}" CommandParameter="3"></Button>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Test Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding TestCount3}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Pass Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding PassCount3}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Fail Count:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding FailCount3}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="pcs" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="Yield:" Width="100" Margin="5,0"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Width="70" Margin="5,0" Text="{Binding Yield3}"></TextBlock>
+                                        <TextBlock Style="{StaticResource TextBlockBase}" Text="%" Margin="5,0"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </TabItem>
+                        </TabControl>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

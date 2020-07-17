@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Omicron.View.AlarmLockDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mvvm="clr-namespace:BingLibrary.hjb;assembly=BingLibrary"
+             xmlns:local="clr-namespace:Omicron.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Visibility="{Binding AlarmTextGridShow}" Grid.Row="0" Background="Red">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Text="{Binding AlarmTextString}" FontSize="26"></TextBlock>
+        </Grid>
+        <Canvas Grid.Row="1">
+            <StackPanel Canvas.Left="100" Canvas.Top="100" Orientation="Horizontal">
+                <TextBlock Text="密码:" FontSize="60"></TextBlock>
+                <TextBox Margin="40,0" FontSize="60" Width="600" Text="{Binding AlarmViewPassword}"></TextBox>
+            </StackPanel>
+            <Button Canvas.Left="720" Canvas.Top="300" Width="160" Height="80" Content="确认" FontSize="40" Background="Gray" Command="{mvvm:ActionAuto ConfigAlarmView}"></Button>
+        </Canvas>
+    </Grid>
+</UserControl>

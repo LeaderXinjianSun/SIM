@@ -1,0 +1,992 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:control="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="Ellipse" x:Key="EllipseStatusBase">
+        <Setter Property="Fill" Value="Red"></Setter>
+        <Setter Property="Width" Value="20"></Setter>
+        <Setter Property="Height" Value="20"></Setter>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseStatusBase}" x:Key="PLCConnectStatus">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsPLCConnect}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid0">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus0}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus0}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid1">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus1}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus1}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid2">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus2}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus2}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid3">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus3}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus3}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid4">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus4}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus4}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid5">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus5}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus5}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid6">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus6}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus6}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid7">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus7}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus7}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid8">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus8}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus8}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid9">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus9}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus9}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid10">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus10}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus10}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid11">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus11}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus11}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid12">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus12}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus12}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid13">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus13}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus13}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid14">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus14}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus14}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid15">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus15}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus15}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid16">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus16}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus16}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid17">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus17}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus17}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid18">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus18}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus18}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid19">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus19}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus19}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid20">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus20}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus20}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid21">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus21}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus21}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid22">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus22}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus22}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid23">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus23}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus23}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid24">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus24}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus24}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid25">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus25}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus25}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid26">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus26}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus26}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid27">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus27}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus27}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid28">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus28}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus28}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid29">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus29}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus29}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid30">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus30}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus30}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid31">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus31}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus31}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid32">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus32}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus32}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid33">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus33}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus33}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid34">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus34}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus34}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid35">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus35}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus35}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid36">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus36}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus36}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid37">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus37}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus37}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid38">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus38}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus38}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Grid" x:Key="SampleProcessDisplayGrid39">
+        <Setter Property="Background" Value="Red"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SampleItemsStatus39}" Value="">
+                <Setter Property="Background" Value="LightGray"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SampleItemsStatus39}" Value="ok">
+                <Setter Property="Background" Value="LightGreen"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseStatusBase}" x:Key="TCPConnectStatus">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsTCPConnect}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseStatusBase}" x:Key="DBConnectStatus">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsDBConnect}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseStatusBase}" x:Key="HaoCaiStatus">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding HaoCaiOK}" Value="A">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding HaoCaiOK}" Value="B">
+                <Setter Property="Fill" Value="Yellow"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" x:Key="EllipseIOBase">
+        <Setter Property="Fill" Value="Gray"></Setter>
+        <Setter Property="Width" Value="20"></Setter>
+        <Setter Property="Height" Value="20"></Setter>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="SV1">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SuckValue1.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="SV2">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SuckValue2.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="SV3">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SuckValue3.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="SV4">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SuckValue4.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="SV5">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SuckValue5.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="SV6">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SuckValue6.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="SV7">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SuckValue7.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="SV8">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding SuckValue8.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI1">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI1.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI2">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI2.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI3">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI3.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI4">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI4.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI5">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI5.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI6">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI6.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI7">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI7.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI8">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI8.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI9">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI9.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI10">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI10.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI11">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI11.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI12">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI12.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EllipseIOBase}" x:Key="BFI13">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding BFI13.Value}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="EpsonStatusTextBlock">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontFamily" Value="宋体"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Margin" Value="1"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="YieldTextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+    </Style>
+    <Style TargetType="StackPanel" x:Key="EpsonStatusStackPanel">
+        <Setter Property="Margin" Value="8,0"></Setter>
+        <Setter Property="Orientation" Value="Vertical"></Setter>
+        <Setter Property="Width" Value="37"></Setter>
+    </Style>
+    <Style TargetType="Ellipse" x:Key="EpsonEllipseBase">
+        <Setter Property="Height" Value="25" ></Setter>
+        <Setter Property="Width" Value="25" ></Setter>
+        <Setter Property="Fill" Value="Gray"></Setter>
+        <Setter Property="Margin" Value="0,5"></Setter>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EpsonEllipseBase}" x:Key="EpsonStatusAutoColor">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding EpsonStatusAuto}" Value="true">
+                <Setter Property="Fill" Value="Yellow"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EpsonEllipseBase}" x:Key="EpsonStatusWarningColor">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding EpsonStatusWarning}" Value="true">
+                <Setter Property="Fill" Value="Yellow"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EpsonEllipseBase}" x:Key="EpsonStatusSErrorColor">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding EpsonStatusSError}" Value="true">
+                <Setter Property="Fill" Value="Yellow"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EpsonEllipseBase}" x:Key="EpsonStatusSafeGuardColor">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding EpsonStatusSafeGuard}" Value="true">
+                <Setter Property="Fill" Value="Yellow"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EpsonEllipseBase}" x:Key="EpsonStatusEStopColor">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding EpsonStatusEStop}" Value="true">
+                <Setter Property="Fill" Value="Yellow"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EpsonEllipseBase}" x:Key="EpsonStatusErrorColor">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding EpsonStatusError}" Value="true">
+                <Setter Property="Fill" Value="Yellow"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EpsonEllipseBase}" x:Key="EpsonStatusPausedColor">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding EpsonStatusPaused}" Value="true">
+                <Setter Property="Fill" Value="Yellow"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EpsonEllipseBase}" x:Key="EpsonStatusRunningColor">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding EpsonStatusRunning}" Value="true">
+                <Setter Property="Fill" Value="Yellow"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Ellipse" BasedOn="{StaticResource EpsonEllipseBase}" x:Key="EpsonStatusReadyColor">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding EpsonStatusReady}" Value="true">
+                <Setter Property="Fill" Value="Yellow"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Ellipse}" x:Key="EllipseBase">
+        <Setter Property="Fill" Value="Red"></Setter>
+        <Setter Property="Width" Value="20"></Setter>
+        <Setter Property="Height" Value="20"></Setter>
+        <Setter Property="Margin" Value="5,0,5,0"></Setter>
+    </Style>
+    <Style TargetType="{x:Type Ellipse}" BasedOn="{StaticResource EllipseBase}" x:Key="EllipseTestSend">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding TestSendPortStatus}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Ellipse}" BasedOn="{StaticResource EllipseBase}" x:Key="EllipseTestSendFlex">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding TestSendFlexPortStatus}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Ellipse}" BasedOn="{StaticResource EllipseBase}" x:Key="EllipseTestRev">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding TestRevPortStatus}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Ellipse}" BasedOn="{StaticResource EllipseBase}" x:Key="EllipseTestRevFlex">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding TestRevFlexPortStatus}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Ellipse}" BasedOn="{StaticResource EllipseBase}" x:Key="EllipseMsgRev">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding MsgRevPortStatus}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Ellipse}" BasedOn="{StaticResource EllipseBase}" x:Key="EllipseIORev">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IORevPortStatus}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Ellipse}" BasedOn="{StaticResource EllipseBase}" x:Key="EllipseCtrl">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding CtrlPortStatus}" Value="true">
+                <Setter Property="Fill" Value="Green"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Button" x:Key="DebugButton1">
+        <Setter Property="Margin" Value="0,10,0,0"></Setter>
+        <Setter Property="Width" Value="120"></Setter>
+        <Setter Property="Height" Value="40"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+    </Style>
+    <Style TargetType="Button" x:Key="DebugButton2">
+        <Setter Property="Margin" Value="5,0,0,0"></Setter>
+        <Setter Property="Width" Value="40"></Setter>
+        <Setter Property="Height" Value="20"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
+    </Style>
+    <Style TargetType="Button" x:Key="ParameterButton">
+        <Setter Property="Margin" Value="5,2,5,2"></Setter>
+        <Setter Property="Width" Value="50"></Setter>
+        <Setter Property="Height" Value="30"></Setter>
+    </Style>
+    <Style TargetType="Button" x:Key="OperationButton">
+        <Setter Property="Margin" Value="15,15"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontFamily" Value="YaHei"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Background" Value="SeaGreen"></Setter>
+    </Style>
+    <Style TargetType="Button" BasedOn="{StaticResource OperationButton}" x:Key="OperationButtonwithChangeContent">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsShieldTheDoor}" Value="true">
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="Content" Value="取消&#13;屏蔽"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsShieldTheDoor}" Value="false">
+                <Setter Property="FontSize" Value="22"></Setter>
+                <Setter Property="Content" Value="屏蔽"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Button" BasedOn="{StaticResource OperationButton}" x:Key="OperationButtonCiTie">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsOperateCiTie}" Value="true">
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="Content" Value="关闭&#13;电磁铁"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsOperateCiTie}" Value="false">
+                <Setter Property="FontSize" Value="14"></Setter>
+                <Setter Property="Content" Value="打开&#13;电磁铁"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="ComboBox" x:Key="ComboBoxBase">
+        <Setter Property="Width" Value="100"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Margin" Value="5,2,0,2"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TextBlockBase">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TextBlockTitle">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="FontSize" Value="24"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}" x:Key="TextBlockParameterName">
+        <Setter Property="Width" Value="70"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}" x:Key="TextBlockParameterMidName">
+        <Setter Property="Width" Value="80"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}" x:Key="TextBlockParameterLoneName">
+        <Setter Property="Width" Value="120"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TextBlockBarcode" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="Margin" Value="10,0"></Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" x:Key="TextBoxBase">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="Margin" Value="5,0,0,0"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxBase}" x:Key="TextBoxIp">
+        <Setter Property="Width" Value="170"></Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxBase}" x:Key="TextBoxPort">
+        <Setter Property="Width" Value="70"></Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxBase}" x:Key="TextBoxPath">
+        <Setter Property="Width" Value="350"></Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxBase}" x:Key="TextBoxCor">
+        <Setter Property="Width" Value="100"></Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxBase}" x:Key="TextBoxBarcode">
+        <Setter Property="Width" Value="220"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        
+        <!--<Setter Property="IsReadOnly" Value="True"></Setter>-->
+        <Setter Property="Height" Value="24"></Setter>
+    </Style>
+    <Style TargetType="StackPanel" x:Key="ParameterHorizontalStackPanel">
+        <Setter Property="Orientation" Value="Horizontal"></Setter>
+        <Setter Property="Margin" Value="5,5,0,0"></Setter>
+    </Style>
+    <Style TargetType="control:Tile" x:Key="TileBase">
+        <Setter Property="Width" Value="80"></Setter>
+        <Setter Property="Height" Value="80"></Setter>
+    </Style>
+    <Style TargetType="Rectangle" x:Key="MetroTileRectangle">
+        <Setter Property="Width" Value="25"></Setter>
+        <Setter Property="Height" Value="25"></Setter>
+        <Setter Property="Fill" Value="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type control:Tile}}}"></Setter>
+    </Style>
+    <Style TargetType="Border" x:Key="BorderBase">
+        <Setter Property="BorderThickness" Value="1,1,1,1"></Setter>
+        <Setter Property="BorderBrush" Value="LightBlue"></Setter>
+    </Style>
+    <Style TargetType="Border" BasedOn="{StaticResource BorderBase}" x:Key="ForBarcodeDisplay">
+        <Setter Property="BorderThickness" Value="1,1,1,1"></Setter>
+        <Setter Property="BorderBrush" Value="Gray"></Setter>
+        <Setter Property="Margin" Value="10,0,10,0"></Setter>
+        <Setter Property="Height" Value="50"></Setter>
+    </Style>
+    <Style TargetType="CheckBox" x:Key="CheckBoxBase">
+        <Setter Property="Margin" Value="20,0"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+    </Style>
+    <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxBase}" x:Key="AdminControl">
+        <Setter Property="Visibility" Value="Visible"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding AdminControl}" Value="False">
+                <Setter Property="Visibility" Value="Collapsed"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="LabelBase">
+        <Setter Property="FontSize" Value="36"></Setter>
+        <Setter Property="Foreground" Value="YellowGreen"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TesterStatus">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+    <Style TargetType="Grid" x:Key="DoorShieldedAlarmGrid">
+        <Setter Property="Visibility" Value="Collapsed"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=IsShieldTheDoor}" Value="true">
+                <Setter Property="Visibility" Value="Visible"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="WaitPcsStyle">
+        <Setter Property="Text" Value="生产"></Setter>
+        <Setter Property="Background" Value="Blue"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=WaitPcsFlag}" Value="True">
+                <Setter Property="Text" Value="待料"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=WaitPcsFlag}" Value="True">
+                <Setter Property="Background" Value="Red"></Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="MetroToggleButtonSVN"  TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MetroToggleButton}">
+        <Setter Property="Width" Value="50"></Setter>
+        <Setter Property="Height" Value="50"></Setter>
+        <Setter Property="Margin" Value="10"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid>
+                        <Border x:Name="Background" Background="{TemplateBinding Background}" CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(control:ControlsHelper.CornerRadius), Mode=OneWay}" />
+                        <Border x:Name="Border"
+                                Background="{x:Null}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(control:ControlsHelper.CornerRadius), Mode=OneWay}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <Border x:Name="DisabledVisualElement"
+                                Background="{DynamicResource ControlsDisabledBrush}"
+                                Opacity="0"
+                                CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(control:ControlsHelper.CornerRadius), Mode=OneWay}"
+                                IsHitTestVisible="False"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <control:ContentControlEx x:Name="PART_ContentPresenter"
+                                                   Padding="{TemplateBinding Padding}"
+                                                   HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                   VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                   Content="{TemplateBinding Content}"
+                                                   ContentCharacterCasing="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(control:ControlsHelper.ContentCharacterCasing)}"
+                                                   ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                                   ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                   ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                                   RecognizesAccessKey="True"
+                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="DisabledVisualElement" Property="Opacity" Value="0.7" />
+                            <Setter TargetName="PART_ContentPresenter" Property="Opacity" Value="0.3" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <!--<Setter Property="Background" Value="{DynamicResource GrayBrush2}" />-->
+                <Setter Property="Background" Value= "Yellow" />
+                <Setter Property="BorderBrush" Value="{DynamicResource GrayBrush5}" />
+                <Setter Property="BorderThickness" Value="2" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,145 @@
+﻿<UserControl x:Class="Omicron.View.MainWindowView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Omicron.View"
+             xmlns:mvvm="clr-namespace:BingLibrary.hjb;assembly=BingLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="738" d:DesignWidth="1024" DataContext="{mvvm:Data md}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="SxjDictionary.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="68*"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu IsEnabled="{Binding MenuIsEnabled}">
+            <MenuItem Header="主页" Command="{mvvm:ActionAuto ChoseHomePage}"></MenuItem>
+            <!--<MenuItem Header="耗材" IsEnabled="{Binding isLogin}" Command="{mvvm:ActionAuto ChoseHaoCaiPage}"></MenuItem>-->
+            <MenuItem Header="条码" Command="{mvvm:ActionAuto ChoseBarcodeDisplayPage}"></MenuItem>
+            <MenuItem Header="检测相机" Command="{mvvm:ActionAuto ChoseCameraHcPage}"></MenuItem>
+            <MenuItem Header="扫码" Command="{mvvm:ActionAuto ChoseScanPage}"></MenuItem>
+            <MenuItem Header="轴控" IsEnabled="{Binding isLogin}" Command="{mvvm:ActionAuto ChoseTwincatNcPage}"></MenuItem>
+            <!--<MenuItem Header="样本">
+                <MenuItem Header="数据库" Command="{mvvm:ActionAuto ChoseSampleTestPage}"></MenuItem>
+                <MenuItem Header="不良项" Command="{mvvm:ActionAuto ChoseSampleTestPage1}"></MenuItem>
+                <MenuItem Header="记录" Command="{mvvm:ActionAuto ChoseSampleTestResultPage}"></MenuItem>
+                --><!--<MenuItem Header="显示" Command="{mvvm:ActionAuto ChoseSampleProcessDisplay}"></MenuItem>--><!--
+            </MenuItem>-->
+            <MenuItem Header="记录" Command="{mvvm:ActionAuto ChoseTestRecordPage}"></MenuItem>
+            <MenuItem Header="报警" Command="{mvvm:ActionAuto ChoseAlarmRecordPage}"></MenuItem>
+            <MenuItem Header="帮助" Command="{mvvm:ActionAuto ChoseHelpPage}"></MenuItem>
+            <MenuItem Header="关于" Command="{mvvm:ActionAuto ChoseAboutPage}"></MenuItem>
+            <MenuItem Header="{Binding LoginButtonString}" Command="{mvvm:ActionAuto LoginAction}"></MenuItem>
+            <MenuItem Header="参数" IsEnabled="{Binding isLogin}">
+                <MenuItem Header="机台参数" Command="{mvvm:ActionAuto ChoseParameterPage}"/>
+                <!--<MenuItem Header="操作" Command="{mvvm:ActionAuto ChoseOperaterActionPage}"/>-->
+            </MenuItem>
+        </Menu>
+        <Grid Grid.RowSpan="2" Grid.Row="1">
+            <Grid Visibility="{Binding HomePageVisibility}">
+                <local:HomePage></local:HomePage>
+            </Grid>
+            <!--<Grid Visibility="{Binding HaoCaiVisibility}">
+                <local:TempCount></local:TempCount>
+            </Grid>-->
+            <!--<Grid Visibility="{Binding AboutPageVisibility}">
+                --><!--<local:AboutPage></local:AboutPage>--><!--
+            </Grid>-->
+            <Grid Visibility="{Binding ParameterPageVisibility}">
+                <local:ParameterPage></local:ParameterPage>
+            </Grid>
+            <Grid Visibility="{Binding CameraHcPageVisibility}">
+                <local:CameraHcPage></local:CameraHcPage>
+            </Grid>
+            <Grid Visibility="{Binding BarcodeDisplayPageVisibility}">
+                <local:BarcodeDisplayPage></local:BarcodeDisplayPage>
+            </Grid>
+            <Grid Visibility="{Binding TestRecordPageVisibility}">
+                <local:TestRecordPage></local:TestRecordPage>
+            </Grid>
+            <!--<Grid Visibility="{Binding OperaterActionPageVisibility}">
+                <local:OperaterActionPage></local:OperaterActionPage>
+            </Grid>-->
+            <Grid Visibility="{Binding TwincatNcPageVisibility}">
+                <local:TwincatNcPage></local:TwincatNcPage>
+            </Grid>
+            <Grid Visibility="{Binding ScanPageVisibility}">
+                <local:ScanPage></local:ScanPage>
+            </Grid>
+            <!--<Grid Visibility="{Binding SampleTestPageVisibility}">
+                <local:SampleTestPage></local:SampleTestPage>
+            </Grid>-->
+            <Grid Visibility="{Binding AlarmRecordPageVisibility}">
+                <local:AlarmRecordPage></local:AlarmRecordPage>
+            </Grid>
+            <!--<Grid Visibility="{Binding SampleTestPage1Visibility}">
+                <local:SampleTestPage1></local:SampleTestPage1>
+            </Grid>-->
+            <Grid Visibility="{Binding HelpPageVisibility}">
+                <local:HelpPage></local:HelpPage>
+            </Grid>
+            <!--<Grid Visibility="{Binding SampleTestResultPageVisibility}">
+                <local:SampleTestResultPage></local:SampleTestResultPage>
+            </Grid>-->
+            <Grid Visibility="{Binding AlarmLockDisplayVisibility}">
+                <local:AlarmLockDisplay></local:AlarmLockDisplay>
+            </Grid>
+            <!--<Grid Visibility="{Binding SampleProcessDisplayVisibility}">
+                <local:SampleProcessDisplay></local:SampleProcessDisplay>
+            </Grid>-->
+        </Grid>
+
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <TextBlock>PLC</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <Ellipse Style="{StaticResource PLCConnectStatus}"></Ellipse>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock>机械手</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <Ellipse Style="{StaticResource TCPConnectStatus}"></Ellipse>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock>数据库</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <Ellipse Style="{StaticResource DBConnectStatus}"></Ellipse>
+            </StatusBarItem>
+            <!--<StatusBarItem>
+                <TextBlock>耗材</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem>
+                <Ellipse Style="{StaticResource HaoCaiStatus}"></Ellipse>
+            </StatusBarItem>-->
+
+            <StatusBarItem HorizontalAlignment="Right" Margin="50,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource WaitPcsStyle}"></TextBlock>
+                    <TextBlock Text="MODE:" Margin="10,0"></TextBlock>
+                    <TextBlock Text="{Binding OperateModeStr}"></TextBlock>
+                </StackPanel>
+
+            </StatusBarItem>
+            <!--<StatusBarItem  Margin="50,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="MODE:" Margin="10,0"></TextBlock>
+                    <TextBlock Text="{Binding OperateModeStr}"></TextBlock>
+                </StackPanel>
+
+            </StatusBarItem>-->
+
+        </StatusBar>
+    </Grid>
+</UserControl>
