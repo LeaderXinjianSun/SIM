@@ -19,6 +19,7 @@ using System.Windows.Threading;
 using 臻鼎科技OraDB;
 using System.Diagnostics;
 using BingLibrary.hjb.PLC;
+using SXJLibrary;
 //using MahApps.Metro.Controls.Dialogs;
 
 namespace Omicron.ViewModel
@@ -2963,24 +2964,16 @@ namespace Omicron.ViewModel
             //await Task.Delay(10);
         }
         #region 数据库
-        private void setLocalTime(string strDateTime)
-        {
-            DateTimeUtility.SYSTEMTIME st = new DateTimeUtility.SYSTEMTIME();
-            DateTime dt = Convert.ToDateTime(strDateTime);
-            st.FromDateTime(dt);
-            DateTimeUtility.SetLocalTime(ref st);
-        }
         private void ConnectDBTest()
         {
             try
             {
-                OraDB oraDB = new OraDB(SQL_ora_server, SQL_ora_user, SQL_ora_pwd);
+
+                Oracle oraDB = new Oracle("qddb04.eavarytech.com", "mesdb04", "ictdata", "ictdata*168");
                 if (oraDB.isConnect())
                 {
-                    string dbtime = oraDB.sfc_getServerDateTime();
-                    setLocalTime(dbtime);
-                    //Msg = messagePrint.AddMessage("获取数据库时间： " + dbtime);
-
+                    string dbtime = oraDB.OraclDateTime();
+                    Msg = messagePrint.AddMessage("获取数据库时间： " + dbtime);
                     IsDBConnect = true;
                 }
                 else
@@ -2990,10 +2983,12 @@ namespace Omicron.ViewModel
                     IsDBConnect = false;
                 }
                 oraDB.disconnect();
+
             }
             catch (Exception ex)
             {
                 Msg = messagePrint.AddMessage("获取数据库时间失败");
+                Msg = messagePrint.AddMessage(ex.Message);
                 IsDBConnect = false;
             }
         }
@@ -3029,22 +3024,16 @@ namespace Omicron.ViewModel
         }
         private void SelectSampleResultfromDt()
         {
-            string[] arrField = new string[2];
-            string[] arrValue = new string[2];
             try
             {
-                string tablename = "FLUKE_DATA";
-                OraDB oraDB = new OraDB(SQL_ora_server, SQL_ora_user, SQL_ora_pwd);
+                Oracle oraDB = new Oracle("qddb04.eavarytech.com", "mesdb04", "ictdata", "ictdata*168");
                 if (oraDB.isConnect())
                 {
                     IsDBConnect = true;
                     foreach (DataRow item in SampleDt.Rows)
                     {
-                        arrField[0] = "BARCODE";
-                        arrValue[0] = (string)item["BARCODE"];
-                        arrField[1] = "FL04";
-                        arrValue[1] = (string)item["SR01"];
-                        DataSet s = oraDB.selectSQLwithOrder(tablename.ToUpper(), arrField, arrValue);
+                        DataSet s = oraDB.executeQuery($"SELECT * FROM FLUKE_DATA WHERE BARCODE = '{(string)item["BARCODE"]}' AND FL04 = '{(string)item["SR01"]}' ORDER BY TESTDATE DESC, TESTTIME DESC");
+
                         SinglDt = s.Tables[0];
                         if (SinglDt.Rows.Count == 0)
                         {
@@ -3116,18 +3105,14 @@ namespace Omicron.ViewModel
         private bool LookforDt(string barcode, ushort index)
         {
             bool r = false;
-            string[] arrField = new string[1];
-            string[] arrValue = new string[1];
             try
             {
                 string tablename = BarsamTableNames[index];
-                OraDB oraDB = new OraDB(SQL_ora_server, SQL_ora_user, SQL_ora_pwd);
+                Oracle oraDB = new Oracle("qddb04.eavarytech.com", "mesdb04", "ictdata", "ictdata*168");
                 if (oraDB.isConnect())
                 {
                     IsDBConnect = true;
-                    arrField[0] = "BARCODE";
-                    arrValue[0] = barcode;
-                    DataSet s = oraDB.selectSQL(tablename.ToUpper(), arrField, arrValue);
+                    DataSet s = oraDB.executeQuery($"SELECT * FROM {tablename.ToUpper()} WHERE BARCODE = '{barcode}'");
                     SinglDt = s.Tables[0];
                     if (SinglDt.Rows.Count == 0)
                     {
@@ -3162,18 +3147,13 @@ namespace Omicron.ViewModel
         private bool samCheckinLoadAction(string user)
         {
             bool r = false;
-            string[] arrField = new string[1];
-            string[] arrValue = new string[1];
             try
             {
-                string tablename = "BARSAMUSER";
-                OraDB oraDB = new OraDB(SQL_ora_server, SQL_ora_user, SQL_ora_pwd);
+                Oracle oraDB = new Oracle("qddb04.eavarytech.com", "mesdb04", "ictdata", "ictdata*168");
                 if (oraDB.isConnect())
                 {
                     IsDBConnect = true;
-                    arrField[0] = "UNAME";
-                    arrValue[0] = user.ToUpper();
-                    DataSet s = oraDB.selectSQL(tablename.ToUpper(), arrField, arrValue);
+                    DataSet s = oraDB.executeQuery($"SELECT * FROM BARSAMUSER WHERE UNAME = '{user.ToUpper()}'");
                     DataTable singlDt = s.Tables[0];
                     if (singlDt.Rows.Count == 0)
                     {
@@ -3226,14 +3206,12 @@ namespace Omicron.ViewModel
                 x758SamCheckinData.Stnum = Barsaminfo_Stnum;
                 x758SamCheckinData.Unum = Barsaminfo_Unum;
                 x758SamCheckinData.Ngitem = SamNgItemsTableNames[SamNgItemsTableIndex].ToUpper();
-                string tablename = "BARSAMINFO";
-                OraDB oraDB = new OraDB(SQL_ora_server, SQL_ora_user, SQL_ora_pwd);
+                Oracle oraDB = new Oracle("qddb04.eavarytech.com", "mesdb04", "ictdata", "ictdata*168");
                 if (oraDB.isConnect())
                 {
                     IsDBConnect = true;
-                    string[,] arrFieldAndNewValue = { { "PARTNUM", x758SamCheckinData.Partnum }, { "SITEM", "FLUKE" }, { "STNUM", x758SamCheckinData.Stnum.ToString() }, { "UNUM", x758SamCheckinData.Unum.ToString() }, { "NGITEM", x758SamCheckinData.Ngitem } };
-                    string[,] arrFieldAndOldValue = { { "BARCODE", x758SamCheckinData.Barcode } };
-                    oraDB.updateSQL1(tablename.ToUpper(), arrFieldAndNewValue, arrFieldAndOldValue);
+                    oraDB.executeNonQuery($"UPDATE BARSAMINFO SET PARTNUM = '{x758SamCheckinData.Partnum}',SITEM = FLUKE'',STNUM = {x758SamCheckinData.Stnum.ToString()},UNUM = {x758SamCheckinData.Unum.ToString()},NGITEM = '{x758SamCheckinData.Ngitem}' WHERE BARCODE = {x758SamCheckinData.Barcode}");
+                    oraDB.executeNonQuery("COMMIT");
                     Msg = messagePrint.AddMessage("数据更新完成");
                     r = true;
                 }
@@ -3263,14 +3241,12 @@ namespace Omicron.ViewModel
                 x758SamCheckinData.Stnum = Barsaminfo_Stnum;
                 x758SamCheckinData.Unum = Barsaminfo_Unum;
                 x758SamCheckinData.Ngitem = SamNgItemsTableNames[SamNgItemsTableIndex].ToUpper();
-                string tablename = "BARSAMINFO";
-                OraDB oraDB = new OraDB(SQL_ora_server, SQL_ora_user, SQL_ora_pwd);
+                Oracle oraDB = new Oracle("qddb04.eavarytech.com", "mesdb04", "ictdata", "ictdata*168");
                 if (oraDB.isConnect())
                 {
                     IsDBConnect = true;
-                    string[] arrFieldAndNewValue = { "PARTNUM", "BARCODE", "SITEM", "STNUM", "UNUM", "NGITEM" };
-                    string[] arrFieldAndOldValue = { x758SamCheckinData.Partnum, x758SamCheckinData.Barcode, "FLUKE", x758SamCheckinData.Stnum.ToString(), x758SamCheckinData.Unum.ToString(), x758SamCheckinData.Ngitem };
-                    oraDB.insertSQL1(tablename.ToUpper(), arrFieldAndNewValue, arrFieldAndOldValue);
+                    oraDB.executeNonQuery($"INSERT INTO BARSAMINFO (PARTNUM,BARCODE,SITEM,,STNUM,UNUM,NGITEM) VALUES ('{x758SamCheckinData.Partnum}','{x758SamCheckinData.Barcode}','FLUKE',{x758SamCheckinData.Stnum.ToString()},{x758SamCheckinData.Unum.ToString()},'{x758SamCheckinData.Ngitem}')");
+                    oraDB.executeNonQuery("COMMIT");
                     Msg = messagePrint.AddMessage("数据插入完成");
                     r = true;
                 }
@@ -3317,14 +3293,12 @@ namespace Omicron.ViewModel
                 {
                     x758SampleResultData.TRES = x758SampleResultData.TRES.Substring(0, 19);
                 }
-                string tablename = "BARSAMREC";
-                OraDB oraDB = new OraDB(SQL_ora_server, SQL_ora_user, SQL_ora_pwd);
+                Oracle oraDB = new Oracle("qddb04.eavarytech.com", "mesdb04", "ictdata", "ictdata*168");
                 if (oraDB.isConnect())
                 {
                     IsDBConnect = true;
-                    string[] arrFieldAndNewValue = { "PARTNUM", "SITEM", "BARCODE", "NGITEM", "TRES", "MNO", "CDATE", "CTIME", "SR01" };
-                    string[] arrFieldAndOldValue = { x758SampleResultData.PARTNUM, x758SampleResultData.SITEM, x758SampleResultData.BARCODE, x758SampleResultData.NGITEM, x758SampleResultData.TRES, x758SampleResultData.MNO, x758SampleResultData.CDATE, x758SampleResultData.CTIME, x758SampleResultData.SR01 };
-                    oraDB.insertSQL1(tablename.ToUpper(), arrFieldAndNewValue, arrFieldAndOldValue);
+                    oraDB.executeNonQuery($"INSERT INTO BARSAMREC (PARTNUM,SITEM,BARCODE,NGITEM,TRES,MNO,CDATE,CTIME,SR01) VALUES ('{x758SampleResultData.PARTNUM}','{x758SampleResultData.SITEM}','{x758SampleResultData.BARCODE}','{x758SampleResultData.NGITEM}','{x758SampleResultData.TRES}','{x758SampleResultData.MNO}','{x758SampleResultData.CDATE}','{x758SampleResultData.CTIME}','{x758SampleResultData.SR01}')");
+                    oraDB.executeNonQuery("COMMIT");
                     Msg = messagePrint.AddMessage("数据插入完成");
                     r = true;
                 }

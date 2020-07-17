@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Omicron"
         xmlns:view="clr-namespace:Omicron.View;assembly=Omicron.View"
         mc:Ignorable="d"
-        Title="Omicron for SIM Ver20180923.01" WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Title="Omicron for SIM Ver20200717" WindowStartupLocation="CenterScreen" WindowState="Maximized"
                      BorderThickness="0" GlowBrush="Black"  ResizeMode="CanResizeWithGrip" WindowTransitionsEnabled="True"
                      Icon="/icons/sim_card_64px_1083887_easyicon.net.ico" Height="738" Width="1024" Closing="MetroWindow_Closing">
     <Grid>
